@@ -11,7 +11,7 @@ public class Runnable {
 				.createEntityManagerFactory("emf");
 		EntityManager em = emf.createEntityManager();
 		try {
-			Person person = new Teacher("Tom", 100.0);
+			Person person = new Teacher("Sara", 100.0);
 			em.getTransaction().begin();
 			em.persist(person);
 			em.getTransaction().commit();

@@ -1,5 +1,6 @@
 package ua.com.javastartup.enterprise;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	String name;
+	@Embedded
+	Address address;
 
 	public Person(String name) {
 		this.name = name;
@@ -18,6 +21,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + "]";
+		return "Person [id=" + id + ", name=" + name
+				+ ", address=" + address + "]";
 	}
 }

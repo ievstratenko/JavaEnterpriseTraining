@@ -1,11 +1,22 @@
 package ua.com.javastartup.enterprise;
 
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 
-@Embeddable
+@Entity
 public class Address {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Long id;
 	String city;
-	String street;	
+	String street;
+	@ManyToOne
+	@JoinTable(name = "person_address")
+	Person owner;
 
 	public Address() {
 		super();
@@ -18,7 +29,7 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [city=" + city + ", street="
+		return "Address [id=" + id + ", city=" + city + ", street="
 				+ street + "]";
 	}
 

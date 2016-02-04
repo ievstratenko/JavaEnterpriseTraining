@@ -1,5 +1,8 @@
 package ua.com.javastartup.enterprise;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -14,23 +17,21 @@ public class Runnable {
 		Person p = null;
 		try {
 			Person person = new Person("Ivan");
-			person.address.add(new Address("Kyiv", "Gagarina"));
-			person.address
-					.add(new Address("Odessa", "Deribasovskaya"));
-			person.phoneNumbers.put("Home", "+38068...");
-			person.phoneNumbers.put("Work", "+38044...");
+			List<Address> address = new ArrayList<>();			
+			address.add(new Address("Kyiv", "Gagarina"));
+			address.add(new Address("Odessa", "Deribasovskaya"));
+			person.setAddress(address);
+			
 			em.getTransaction().begin();
-//			em.persist(person);
+			em.persist(person);
 			em.getTransaction().commit();
+			
 			TypedQuery<Person> q = em.createQuery("from Person",
 					Person.class);
-			System.out.println("1===");
 			p = q.getResultList().get(0);
-			System.out.println("2===");
 			System.out.println(p);
-			System.out.println("3==============");
-			System.out.println(p.getPhoneNumbers());
-			System.out.println(p.getPhoneNumbers().getClass());
+			System.out.println(p.getAddress());			
+			
 		} finally {
 			em.close();
 			emf.close();

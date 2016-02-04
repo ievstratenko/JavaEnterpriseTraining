@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.MapKeyColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Person {
@@ -22,8 +24,10 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	String name;
-	@ElementCollection
-	List<Address> address = new ArrayList<>();
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL,
+			orphanRemoval = true)
+	private List<Address> address = new ArrayList<>();
+
 	@ElementCollection(fetch = FetchType.EAGER)
 	@JoinTable(name = "person_phone_number",
 			joinColumns = @JoinColumn(name = "person_id") )
@@ -37,6 +41,15 @@ public class Person {
 
 	public Person(String name) {
 		this.name = name;
+	}
+
+	public List<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<Address> address) {
+		address.forEach(a -> a.owner = this);
+		this.address = address;
 	}
 
 	public Map<String, String> getPhoneNumbers() {

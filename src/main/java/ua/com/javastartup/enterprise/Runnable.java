@@ -17,13 +17,21 @@ public class Runnable {
 		Person p = null;
 		try {
 			Person person = new Person("Ivan");
+			Person person2 = new Person("Vera");
 			List<Address> address = new ArrayList<>();			
 			address.add(new Address("Kyiv", "Gagarina"));
 			address.add(new Address("Odessa", "Deribasovskaya"));
 			person.setAddress(address);
+			List<Address> address2 = new ArrayList<>();			
+			address2.add(address.get(0));
+			address2.add(new Address("Lviv", "Svoboda"));
+			person2.setAddress(address2);
+			
+			
 			
 			em.getTransaction().begin();
 			em.persist(person);
+			em.persist(person2);
 			em.getTransaction().commit();
 			
 			TypedQuery<Person> q = em.createQuery("from Person",

@@ -1,11 +1,13 @@
 package ua.com.javastartup.enterprise;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Address {
@@ -14,9 +16,8 @@ public class Address {
 	Long id;
 	String city;
 	String street;
-	@ManyToOne
-	@JoinTable(name = "person_address")
-	Person owner;
+	@ManyToMany(mappedBy = "address")
+	Set<Person> owner = new TreeSet<>();
 
 	public Address() {
 		super();

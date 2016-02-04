@@ -11,6 +11,10 @@ public class Teacher extends Person {
 		this.salary = salary;
 	}
 
+	public Teacher() {
+		super();
+	}
+
 	@Override
 	public String toString() {
 		return "Student [salary=" + salary + ", id="

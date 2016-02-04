@@ -11,9 +11,14 @@ public class Student extends Person {
 		this.speciality = speciality;
 	}
 
+	public Student() {
+		super();
+	}
+
 	@Override
 	public String toString() {
-		return "Student [speciality=" + speciality + ", id="
-				+ id + ", name=" + name + "]";
+		return "Student [speciality=" + speciality + ", id=" + id
+				+ ", name=" + name + ", address=" + address
+				+ ", phoneNumbers=" + phoneNumbers + "]";
 	}
 }

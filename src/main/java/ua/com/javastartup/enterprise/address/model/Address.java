@@ -1,4 +1,4 @@
-package ua.com.javastartup.enterprise;
+package ua.com.javastartup.enterprise.address.model;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+
+import ua.com.javastartup.enterprise.person.model.Person;
 
 @Entity
 public class Address {

@@ -1,9 +1,7 @@
 package ua.com.javastartup.enterprise;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-
-import ua.com.javastartup.enterprise.person.model.Person;
+import javax.persistence.Query;
 
 public class Runnable {
 
@@ -12,9 +10,10 @@ public class Runnable {
 		EntityManager em = DatabaseConfig.EMF.createEntityManager();
 		System.out.println(em.getClass());
 		try {
-			TypedQuery<Person> q = em.createNamedQuery(
-					"Person.findByName", Person.class);
-			q.setParameter("pattern", "P%");
+			Query q = em.createQuery("select "
+					+ "new ua.com.javastartup.enterprise.PersonNameStatistic"
+					+ "(count(p), p.name) "
+					+ "from Person p group by p.name");
 			System.out.println(q.getResultList());
 
 		} finally {

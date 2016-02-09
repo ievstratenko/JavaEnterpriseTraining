@@ -26,4 +26,19 @@ public class PersonDao {
 			System.err.println(t);
 		}
 	}
+
+	public void delete(Person person) {
+		em.getTransaction().begin();
+		try {
+			em.remove(person);
+			em.getTransaction().commit();
+		} catch (Throwable t) {
+			em.getTransaction().rollback();
+			System.err.println(t);
+		}
+	}
+
+	public void delete(Long id) {
+		delete(em.getReference(Person.class, id));
+	}
 }

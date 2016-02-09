@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,8 @@ public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String name;
+	@Column(name = "name")
+	private String name2;
 	// @Version
 	// private Integer version;
 
@@ -37,7 +39,7 @@ public class Person {
 	}
 
 	public Person(String name) {
-		this.name = name;
+		this.name2 = name;
 	}
 
 	public Person(Long id) {
@@ -48,12 +50,12 @@ public class Person {
 		return id;
 	}
 
-	public String getName() {
-		return name;
+	public String getName2() {
+		return name2;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName2(String name) {
+		this.name2 = name;
 	}
 
 	public List<Address> getAddress() {
@@ -71,7 +73,6 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name + ", address="
-				+ address + "]";
+		return "Person [id=" + id + ", name=" + name2 + "]\n";
 	}
 }

@@ -11,9 +11,10 @@ public class Runnable {
 
 	public static void main(String[] args) throws Exception {
 		boolean test = false;
+		String contextName = test ? "test" : "app";
 		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				"appContext.xml");
-		
+				contextName + "Context.xml");
+
 		PersonService service = ac.getBean(PersonService.class);
 		try {
 			service.save(new Person("Ivan"));

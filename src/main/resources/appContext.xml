@@ -4,20 +4,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
+	<import resource="commonContext.xml" />
+
 	<tx:annotation-driven />
 
 	<bean name="personDao"
 		class="ua.com.javastartup.enterprise.person.dao.PersonDaoImpl">
-		<property name="em">
-			<bean class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
-				<property name="entityManagerFactory" ref="entityManagerFactory" />
-			</bean>
-		</property>
+		<property name="em" ref="entityManager" />
 	</bean>
 
-	<bean name="personService"
-		class="ua.com.javastartup.enterprise.person.service.PersonServiceImpl">
-		<property name="personDao" ref="personDao" />
+	<bean name="entityManager"
+		class="org.springframework.orm.jpa.support.SharedEntityManagerBean">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
 	<bean id="entityManagerFactory"
@@ -28,6 +26,4 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-
-
 </beans>

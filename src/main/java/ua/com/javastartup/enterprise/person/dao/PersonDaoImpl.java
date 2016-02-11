@@ -8,7 +8,11 @@ public class PersonDaoImpl implements PersonDao {
 
 	private EntityManager em;
 
-	public void setEm(EntityManager em) {
+	public PersonDaoImpl() {
+		super();
+	}
+
+	public PersonDaoImpl(EntityManager em) {
 		this.em = em;
 	}
 

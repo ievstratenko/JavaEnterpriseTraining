@@ -10,7 +10,7 @@
 
 	<bean name="personDao"
 		class="ua.com.javastartup.enterprise.person.dao.PersonDaoImpl">
-		<property name="em" ref="entityManager" />
+		<constructor-arg name="em" ref="entityManager" />
 	</bean>
 
 	<bean name="entityManager"

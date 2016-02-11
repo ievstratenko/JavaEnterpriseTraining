@@ -1,8 +1,8 @@
-package ua.com.javastartup.enterprise.person.dao;
+package ua.com.javastartup.enterprise.person.service;
 
 import ua.com.javastartup.enterprise.person.model.Person;
 
-public interface PersonDao {
+public interface PersonService {
 
 	Person findById(Long id);
 

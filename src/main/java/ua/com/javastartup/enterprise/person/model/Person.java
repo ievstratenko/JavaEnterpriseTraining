@@ -1,48 +1,22 @@
 package ua.com.javastartup.enterprise.person.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.NamedQuery;
-import javax.persistence.PrePersist;
-
-import ua.com.javastartup.enterprise.address.model.Address;
 
 @Entity
-@NamedQuery(name = "Person.findByName",
-		query = "from Person where name like :pattern")
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "name")
-	private String name2;
-	// @Version
-	// private Integer version;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "addressPerson",
-			joinColumns = @JoinColumn(name = "personId") ,
-			inverseJoinColumns = @JoinColumn(name = "addressId") )
-	private List<Address> address = new ArrayList<>();
-
-	public Person() {
-	}
+	private String name;
 
 	public Person(String name) {
-		this.name2 = name;
+		this.name = name;
 	}
 
-	public Person(Long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -50,29 +24,16 @@ public class Person {
 		return id;
 	}
 
-	public String getName2() {
-		return name2;
+	public String getName() {
+		return name;
 	}
 
-	public void setName2(String name) {
-		this.name2 = name;
-	}
-
-	public List<Address> getAddress() {
-		return address;
-	}
-
-	public void setAddress(List<Address> address) {
-		this.address = address;
-	}
-
-	@PrePersist
-	public void prePersist() {
-		System.out.println("==== Prepersist");
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Override
 	public String toString() {
-		return "Person [id=" + id + ", name=" + name2 + "]\n";
+		return "Person [id=" + id + ", name=" + name + "]";
 	}
 }

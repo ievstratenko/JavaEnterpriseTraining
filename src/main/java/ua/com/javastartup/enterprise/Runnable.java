@@ -1,8 +1,8 @@
 package ua.com.javastartup.enterprise;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
+import ua.com.javastartup.enterprise.person.dao.PersonDao;
 import ua.com.javastartup.enterprise.person.model.Person;
 
 public class Runnable {
@@ -10,12 +10,10 @@ public class Runnable {
 	public static void main(String[] args) throws Exception {
 
 		EntityManager em = DatabaseConfig.EMF.createEntityManager();
-		System.out.println(em.getClass());
+		PersonDao personDao = new PersonDao(em);
 		try {
-			Query q = em.createNativeQuery("select id, name from PerSON",
-					Person.class);
-			System.out.println(q.getResultList());
-
+			personDao.save(new Person("Taras"));
+			System.out.println(personDao.findById(1L));
 		} finally {
 			em.close();
 			DatabaseConfig.EMF.close();

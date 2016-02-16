@@ -1,21 +1,18 @@
 package ua.com.javastartup.enterprise.person.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
 
 import ua.com.javastartup.enterprise.person.model.Person;
 
+@Repository
 public class PersonDaoImpl implements PersonDao {
 
+	@PersistenceContext
 	private EntityManager em;
-
-	public PersonDaoImpl() {
-		super();
-	}
-
-	public PersonDaoImpl(EntityManager em) {
-		this.em = em;
-	}
-
+	
 	@Override
 	public Person findById(Long id) {
 		return em.find(Person.class, id);

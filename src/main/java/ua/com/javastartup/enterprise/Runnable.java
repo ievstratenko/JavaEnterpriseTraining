@@ -1,6 +1,5 @@
 package ua.com.javastartup.enterprise;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,15 +11,12 @@ public class Runnable {
 	public static void main(String[] args) throws Exception {
 		boolean test = false;
 		String contextName = test ? "test" : "app";
-		ApplicationContext ac = new ClassPathXmlApplicationContext(
-				contextName + "Context.xml");
 
-		PersonService service = ac.getBean(PersonService.class);
-		try {
+		try (AbstractApplicationContext ac = new ClassPathXmlApplicationContext(
+				contextName + "Context.xml")) {
+			PersonService service = ac.getBean(PersonService.class);
 			service.save(new Person("Ivan"));
 			System.out.println(service.findById(1L));
-		} finally {
-			((AbstractApplicationContext) ac).close();
 		}
 	}
 

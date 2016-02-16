@@ -3,8 +3,11 @@ package ua.com.javastartup.enterprise.person.dao;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import ua.com.javastartup.enterprise.person.model.Person;
 
+@Repository
 public class PersonDaoTestImpl implements PersonDao {
 
 	Map<Long, Person> storage = new HashMap<>();

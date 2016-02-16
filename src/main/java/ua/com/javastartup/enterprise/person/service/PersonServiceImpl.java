@@ -1,6 +1,7 @@
 package ua.com.javastartup.enterprise.person.service;
 
-import javax.annotation.PreDestroy;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -15,8 +16,17 @@ public class PersonServiceImpl implements PersonService {
 	@Resource
 	private PersonDao personDao;
 
-	public Person findById(Long id) {
-		return personDao.findById(id);
+	public Person findOne(Long id) {
+		return personDao.findOne(id);
+	}
+
+	public List<Person> findAll() {
+		return personDao.findAll();
+	}
+
+	@Override
+	public List<Person> findByName(String name) {
+		return personDao.findByName(name);
 	}
 
 	@Transactional
@@ -32,11 +42,6 @@ public class PersonServiceImpl implements PersonService {
 	@Transactional
 	public void delete(Long id) {
 		personDao.delete(id);
-	}
-	
-	@PreDestroy
-	public void preDestroy() {
-		System.out.println("PRE DESTROY");
 	}
 
 }

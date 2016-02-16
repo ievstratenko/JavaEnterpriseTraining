@@ -1,15 +1,12 @@
 package ua.com.javastartup.enterprise.person.dao;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import ua.com.javastartup.enterprise.person.model.Person;
 
-public interface PersonDao {
+public interface PersonDao extends JpaRepository<Person, Long> {
 
-	Person findById(Long id);
-
-	void save(Person person);
-
-	void delete(Person person);
-
-	void delete(Long id);
-
+	List<Person> findByName(String name);
 }

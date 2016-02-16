@@ -8,9 +8,7 @@ public interface PersonService {
 
 	Person findOne(Long id);
 
-	List<Person> findAll();
-	
-	List<Person> findByName(String name);	
+	List<Person> findAll();	
 
 	void save(Person person);
 

@@ -24,11 +24,6 @@ public class PersonServiceImpl implements PersonService {
 		return personDao.findAll();
 	}
 
-	@Override
-	public List<Person> findByName(String name) {
-		return personDao.findByName(name);
-	}
-
 	@Transactional
 	public void save(Person person) {
 		personDao.save(person);

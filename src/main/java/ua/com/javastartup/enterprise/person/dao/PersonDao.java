@@ -2,6 +2,8 @@ package ua.com.javastartup.enterprise.person.dao;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +14,8 @@ import ua.com.javastartup.enterprise.person.model.Person;
 
 public interface PersonDao extends JpaRepository<Person, Long> {
 
-	List<Person> findByName(String name);
+	List<Person> findByName(String name, Sort sort);
+	List<Person> findByName(String name, Pageable p);
 
 	@Query("from Person where name=:name and age=:age")
 	List<Person> findByCustomCriteria(@Param("name") String name,

@@ -18,7 +18,7 @@ public class Runnable {
 			PersonDao dao = ac.getBean(PersonDao.class);
 			Sort sort = new Sort(new Order(Direction.DESC, "age"),
 					new Order(Direction.ASC, "id"));
-			Pageable p = new PageRequest(1, 2, sort);
+			Pageable p = new PageRequest(0, 2, sort);
 			System.out.println(dao.findAll(p).getContent());
 			
 		}

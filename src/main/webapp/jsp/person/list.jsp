@@ -5,11 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>JSP</title>
+<title>Person List</title>
 </head>
 <body>
-	<c:if test="${not empty testParam}">
-		<h1>Param : ${testParam}</h1>
-	</c:if>
+	<table>
+		<tr>
+			<td>ID</td>
+			<td>Name</td>
+			<td>Age</td>
+		</tr>
+		<c:forEach items="${list}" var="person">
+			<tr>
+				<td>${person.id}</td>
+				<td>${person.name}</td>
+				<td>${person.age}</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

@@ -10,7 +10,7 @@ public interface PersonService {
 
 	List<Person> findAll();	
 
-	void save(Person person);
+	Person save(Person person);
 
 	void delete(Person person);
 

@@ -25,8 +25,8 @@ public class PersonServiceImpl implements PersonService {
 	}
 
 	@Transactional
-	public void save(Person person) {
-		personDao.save(person);
+	public Person save(Person person) {
+		return personDao.save(person);
 	}
 
 	@Transactional

@@ -5,19 +5,19 @@
 	version="3.0">
 	<display-name>JavaEnterpriseTraining</display-name>
 	<servlet>
-		<servlet-name>plainServlet</servlet-name>
-		<servlet-class>ua.com.javastartup.enterprise.servlet.PlainServlet</servlet-class>
+		<servlet-name>personAddServlet</servlet-name>
+		<servlet-class>ua.com.javastartup.enterprise.person.web.PersonAddServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>plainServlet</servlet-name>
-		<url-pattern>/plain</url-pattern>
+		<servlet-name>personAddServlet</servlet-name>
+		<url-pattern>/person/add</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>jspServlet</servlet-name>
-		<servlet-class>ua.com.javastartup.enterprise.servlet.JspServlet</servlet-class>
+		<servlet-name>personViewServlet</servlet-name>
+		<servlet-class>ua.com.javastartup.enterprise.person.web.PersonViewServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>jspServlet</servlet-name>
-		<url-pattern>/jsp</url-pattern>
+		<servlet-name>personViewServlet</servlet-name>
+		<url-pattern>/person/view</url-pattern>
 	</servlet-mapping>
 </web-app>

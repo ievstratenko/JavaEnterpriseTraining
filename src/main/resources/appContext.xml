@@ -9,11 +9,6 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
 	<import resource="commonContext.xml" />
-
-	<context:component-scan base-package="ua.com.javastartup.enterprise">
-		<context:exclude-filter type="regex"
-			expression="ua.com.javastartup.enterprise.*Test*.*" />
-	</context:component-scan>
 	
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -23,5 +18,4 @@
 		<property name="username" value="root" />
 		<property name="password" value="password" />
 	</bean>
-
 </beans>

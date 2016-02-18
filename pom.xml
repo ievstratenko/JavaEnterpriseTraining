@@ -4,6 +4,7 @@
 	<groupId>JavaEnterpriseTraining</groupId>
 	<artifactId>JavaEnterpriseTraining</artifactId>
 	<version>1.0</version>
+	<packaging>war</packaging>
 	<build>
 		<plugins>
 			<plugin>
@@ -14,7 +15,18 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://localhost:8080/manager/text</url>
+					<username>root</username>
+					<password>password</password>
+				</configuration>
+			</plugin>
 		</plugins>
+		<finalName>JavaEnterpriseTraining</finalName>
 	</build>
 	<dependencies>
 		<dependency>
@@ -26,6 +38,17 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>LATEST</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>LATEST</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -46,6 +69,7 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

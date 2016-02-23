@@ -15,6 +15,9 @@
 		<label for="age">Age</label> <input id="age" name="age" type="number"
 			value="${person.age}" />
 		<br />
+		<label for="dob">Birthday</label> <input id="dob" name="dob" type="date"
+			value="${person.dobStr}" />
+		<br />
 		<input type="submit" />
 	</form>
 	<a href="list">List</a>

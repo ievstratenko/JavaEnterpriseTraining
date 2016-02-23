@@ -17,6 +17,9 @@
 	<label for="age">Age :</label>
 	<span id="age">${person.age}</span>
 	<br />
+	<label for="dob">Birthday :</label>
+	<span id="dob">${person.dobStr}</span>
+	<br />
 	<a href="list">List</a>
 </body>
 </html>

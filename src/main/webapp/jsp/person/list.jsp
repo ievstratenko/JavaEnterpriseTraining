@@ -13,12 +13,14 @@
 			<td>ID</td>
 			<td>Name</td>
 			<td>Age</td>
+			<td>BirthDay</td>
 		</tr>
 		<c:forEach items="${list}" var="person">
 			<tr>
 				<td>${person.id}</td>
 				<td>${person.name}</td>
 				<td>${person.age}</td>
+				<td>${person.dobStr}</td>
 				<td><a href="view?id=${person.id}">View</a></td>
 				<td><a href="edit?id=${person.id}">Edit</a></td>
 				<td><form action="delete?id=${person.id}" method="post">

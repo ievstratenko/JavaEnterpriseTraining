@@ -11,8 +11,8 @@
 	<form action="add" method="post">
 		<label for="name">Name</label> <input id="name" name="name" /> <br />
 		<label for="age">Age</label> <input id="age" name="age" type="number" />
-		<br /> <input
-			type="submit" />
+		<br /> <input type="submit" />
 	</form>
+	<a href="list">List</a>
 </body>
 </html>

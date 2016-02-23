@@ -11,9 +11,8 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="ua.com.javastartup.enterprise" />
 	<tx:annotation-driven />
-	
+
 	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
-
-
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/jsp/" p:suffix=".jsp" />
 </beans>

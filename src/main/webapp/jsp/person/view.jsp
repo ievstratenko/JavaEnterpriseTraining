@@ -17,6 +17,6 @@
 	<label for="age">Age :</label>
 	<span id="age">${person.age}</span>
 	<br />
-
+	<a href="list">List</a>
 </body>
 </html>

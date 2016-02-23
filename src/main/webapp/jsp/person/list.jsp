@@ -19,6 +19,9 @@
 				<td>${person.id}</td>
 				<td>${person.name}</td>
 				<td>${person.age}</td>
+				<td><a href="view?id=${person.id}">View</a></td>
+				<td><a href="edit?id=${person.id}">Edit</a></td>
+				<td><a href="delete?id=${person.id}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

@@ -13,51 +13,44 @@ import ua.com.javastartup.enterprise.person.model.Person;
 import ua.com.javastartup.enterprise.person.service.PersonService;
 
 @Controller
+@RequestMapping("person")
 public class PersonController {
 
 	@Resource
 	PersonService service;
 
-	@RequestMapping(value = "person/list", method = RequestMethod.GET)
+	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list(Model model) {
 		model.addAttribute("list", service.findAll());
 		return "person/list";
 	}
 
-	@RequestMapping(value = "person/view", method = RequestMethod.GET)
-	public String view(@RequestParam("id") Long id, Model model) {
-		model.addAttribute("person", service.findOne(id));
+	@RequestMapping(value = "view", method = RequestMethod.GET)
+	public String view() {
 		return "person/view";
 	}
 
-	@RequestMapping(value = "person/add", method = RequestMethod.GET)
-	public String addForm() {
-		return "person/addForm";
-	}
-
-	@RequestMapping(value = "person/add", method = RequestMethod.POST)
-	public String add(@ModelAttribute("person") Person person) {
-		service.save(person);
-		return "redirect:/person/list";
-	}
-
-	@RequestMapping(value = "person/edit", method = RequestMethod.GET)
-	public String editForm(@RequestParam("id") Long id, Model model) {
-		model.addAttribute("person", service.findOne(id));
-		return "person/editForm";
-	}
-
-	@RequestMapping(value = "person/edit",
-			method = RequestMethod.POST)
-	public String edit(@ModelAttribute("person") Person person) {
-		service.save(person);
-		return "redirect:/person/list";
-	}
-
-	@RequestMapping(value = "person/delete",
+	@RequestMapping(value = { "add", "edit" },
 			method = RequestMethod.GET)
-	public String view(@RequestParam("id") Long id) {
+	public String form() {
+		return "person/form";
+	}
+
+	@RequestMapping(value = "save", method = RequestMethod.POST)
+	public String save(@ModelAttribute("person") Person person) {
+		service.save(person);
+		return "redirect:/person/list";
+	}
+
+	@RequestMapping(value = "delete", method = RequestMethod.POST)
+	public String delete(@RequestParam("id") Long id) {
 		service.delete(id);
 		return "redirect:/person/list";
+	}
+
+	@ModelAttribute("person")
+	public Person getPerson(
+			@RequestParam(value = "id", required = false) Long id) {
+		return id == null ? new Person() : service.findOne(id);
 	}
 }

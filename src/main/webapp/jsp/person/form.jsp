@@ -5,12 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Person Edit Form</title>
+<title>Person ${(person.id != null) ? 'Edit' : 'Add'} Form</title>
 </head>
 <body>
-	<form action="edit" method="post">
-		<input id="id" name="id" type="hidden" value="${person.id}" />
-		<br />
+	<form action="save?id=${person.id}" method="post">
 		<label for="name">Name</label> <input id="name" name="name"
 			value="${person.name}" />
 		<br />

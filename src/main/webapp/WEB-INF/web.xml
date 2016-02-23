@@ -4,20 +4,23 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
 	<display-name>JavaEnterpriseTraining</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:/appContext.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 	<servlet>
-		<servlet-name>personAddServlet</servlet-name>
-		<servlet-class>ua.com.javastartup.enterprise.person.web.PersonAddServlet</servlet-class>
+		<servlet-name>springServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>webContext.xml</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>personAddServlet</servlet-name>
-		<url-pattern>/person/add</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>personViewServlet</servlet-name>
-		<servlet-class>ua.com.javastartup.enterprise.person.web.PersonViewServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>personViewServlet</servlet-name>
-		<url-pattern>/person/view</url-pattern>
+		<servlet-name>springServlet</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 </web-app>

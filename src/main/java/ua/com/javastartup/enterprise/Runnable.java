@@ -9,7 +9,7 @@ public class Runnable {
 
 	public static void main(String[] args) throws Exception {
 		try (AbstractApplicationContext ac = new ClassPathXmlApplicationContext(
-				"appContext.xml")) {
+				"testContext.xml")) {
 			PersonService service = ac.getBean(PersonService.class);
 			System.out.println(service.findAll());			
 		}

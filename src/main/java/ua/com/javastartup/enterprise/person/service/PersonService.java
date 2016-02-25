@@ -15,5 +15,6 @@ public interface PersonService {
 	void delete(Person person);
 
 	void delete(Long id);
-
+	
+	long count();
 }

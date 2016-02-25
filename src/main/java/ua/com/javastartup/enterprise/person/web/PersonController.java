@@ -3,9 +3,11 @@ package ua.com.javastartup.enterprise.person.web;
 import java.beans.PropertyEditorSupport;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -20,6 +22,7 @@ import ua.com.javastartup.enterprise.person.model.Person;
 import ua.com.javastartup.enterprise.person.service.PersonService;
 import ua.com.javastartup.enterprise.util.Constants;
 
+@Scope("request")
 @Controller
 @RequestMapping("person")
 @SessionAttributes("list")
@@ -27,6 +30,8 @@ public class PersonController {
 
 	@Resource
 	PersonService service;
+	
+	String test;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -49,11 +54,13 @@ public class PersonController {
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public String list(Model model) {
 		model.addAttribute("list", service.findAll());
+		test = new Date().toString();
 		return "person/list";
 	}
 
 	@RequestMapping(value = "view", method = RequestMethod.GET)
-	public String view() {
+	public String view(Map<String, Object> model) {
+		model.put("test", test);
 		return "person/view";
 	}
 
@@ -79,5 +86,10 @@ public class PersonController {
 	public Person getPerson(
 			@RequestParam(value = "id", required = false) Long id) {
 		return id == null ? new Person() : service.findOne(id);
+	}
+
+	@ModelAttribute("personCount")
+	public long getPersonCount() {
+		return service.count();
 	}
 }

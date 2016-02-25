@@ -39,4 +39,8 @@ public class PersonServiceImpl implements PersonService {
 		personDao.delete(id);
 	}
 
+	public long count() {
+		return personDao.count();
+	}
+
 }

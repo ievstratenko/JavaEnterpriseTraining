@@ -21,6 +21,8 @@
 	<label for="dob">Birthday :</label>
 	<span id="dob">${person.dobStr}</span>
 	<br />
-	<a href="list">List(${fn:length(list)})</a>
+	<a href="list">List(${personCount})</a>
+	<br />
+	${test}
 </body>
 </html>

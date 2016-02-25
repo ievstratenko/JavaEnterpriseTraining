@@ -3,11 +3,9 @@ package ua.com.javastartup.enterprise.person.web;
 import java.beans.PropertyEditorSupport;
 import java.text.ParseException;
 import java.util.Date;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -16,16 +14,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ua.com.javastartup.enterprise.person.model.Person;
 import ua.com.javastartup.enterprise.person.service.PersonService;
 import ua.com.javastartup.enterprise.util.Constants;
 
-@Scope("request")
 @Controller
 @RequestMapping("person")
-@SessionAttributes("list")
 public class PersonController {
 
 	@Resource
@@ -59,8 +54,8 @@ public class PersonController {
 	}
 
 	@RequestMapping(value = "view", method = RequestMethod.GET)
-	public String view(Map<String, Object> model) {
-		model.put("test", test);
+	public String view() {
+		System.out.println("view");
 		return "person/view";
 	}
 

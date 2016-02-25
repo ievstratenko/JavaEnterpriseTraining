@@ -15,4 +15,11 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/jsp/" p:suffix=".jsp" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="ua.com.javastartup.enterprise.interceptor.TimingInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 </beans>

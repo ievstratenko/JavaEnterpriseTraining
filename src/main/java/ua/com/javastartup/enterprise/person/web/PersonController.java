@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import ua.com.javastartup.enterprise.person.model.Person;
 import ua.com.javastartup.enterprise.person.service.PersonService;
@@ -21,6 +22,7 @@ import ua.com.javastartup.enterprise.util.Constants;
 
 @Controller
 @RequestMapping("person")
+@SessionAttributes("list")
 public class PersonController {
 
 	@Resource

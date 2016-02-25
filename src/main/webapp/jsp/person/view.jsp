@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE>
 <html>
 <head>
@@ -20,6 +21,6 @@
 	<label for="dob">Birthday :</label>
 	<span id="dob">${person.dobStr}</span>
 	<br />
-	<a href="list">List</a>
+	<a href="list">List(${fn:length(list)})</a>
 </body>
 </html>

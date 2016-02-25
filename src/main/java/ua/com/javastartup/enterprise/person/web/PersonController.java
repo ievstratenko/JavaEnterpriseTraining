@@ -25,7 +25,7 @@ public class PersonController {
 
 	@Resource
 	PersonService service;
-	
+
 	String test;
 
 	@InitBinder
@@ -79,8 +79,14 @@ public class PersonController {
 
 	@ModelAttribute("person")
 	public Person getPerson(
-			@RequestParam(value = "id", required = false) Long id) {
-		return id == null ? new Person() : service.findOne(id);
+			@RequestParam(value = "id", required = false) Long id)
+					throws IllegalAccessException {
+		Person result = id == null ? new Person()
+				: service.findOne(id);
+		if (result == null) {
+			throw new IllegalAccessException("no person found in DB");
+		}
+		return result;
 	}
 
 	@ModelAttribute("personCount")

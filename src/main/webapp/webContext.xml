@@ -22,4 +22,11 @@
 			<bean class="ua.com.javastartup.enterprise.interceptor.TimingInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:basename="messages" />
 </beans>
